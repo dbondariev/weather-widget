@@ -2,7 +2,7 @@
   <div>
     <div v-if="dataIsReceived" class="weather-widget">
       <p class="weather-widget__city">{{ weather.city_name }}</p>
-      <h2 class="weather-widget__temp">{{ weather.temp }}<span>°C</span></h2>
+      <h2 class="weather-widget__temp">{{ roundedTemp }}<span>°C</span></h2>
       <p class="weather-widget__status">{{ weather.weather.description }}</p>
     </div>
     <div v-else class="weather-widget">
@@ -19,6 +19,9 @@ export default {
     },
     dataIsReceived() {
       return this.$store.state.dataIsReceived
+    },
+    roundedTemp() {
+      return Math.round(this.weather.temp)
     }
   },
 
